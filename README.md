@@ -17,6 +17,8 @@ rm -rf ~/.cache/thumbnails/fail/
 
 ## Nvidia Limited Color Fix
 
+`sudo nvidia-xconfig`
+
 ```conf
 Section "Device"
     Identifier     "Device0"
