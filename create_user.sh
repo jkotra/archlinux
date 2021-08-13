@@ -10,3 +10,5 @@ read hostname
 echo $hostname > /etc/hostname
 echo "Enter root Password."
 passwd
+
+EDITOR=nano visudo
