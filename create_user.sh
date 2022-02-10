@@ -8,7 +8,9 @@ passwd $username
 echo "Hostname:"
 read hostname
 echo $hostname > /etc/hostname
-echo "Enter root Password."
+echo "Enter root Password..."
 passwd
 
+echo "enable SUDO for %wheel%, press any key to open editor.."
+read
 EDITOR=nano visudo

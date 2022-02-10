@@ -1,5 +1,10 @@
 # archlinux
 
+---
+
+# Other important Notes / Tweaks
+
+
 ## PGP GTK Prompt
 
 ```sh
