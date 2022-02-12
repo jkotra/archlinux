@@ -55,7 +55,6 @@ conky.text = [[
 ${color grey}Kernel:$color ${image ~/conky/arch.png -s 16x16 -p 60,0}  $kernel
 $hr
 ${color grey}Uptime:$color $uptime
-${color grey}Frequency (in MHz):$color $freq
 ${color grey}Frequency (in GHz):$color $freq_g
 ${color grey}RAM Usage:$color $mem/$memmax - $memperc% 
 ${membar 4}
@@ -75,6 +74,6 @@ ${color lightgrey} ${top name 2} ${top pid 2} ${top cpu 2} ${top mem 2}
 ${color lightgrey} ${top name 3} ${top pid 3} ${top cpu 3} ${top mem 3}
 ${color lightgrey} ${top name 4} ${top pid 4} ${top cpu 4} ${top mem 4}
 $hr
-${image ~/conky/rpi.png -s 16x18 -p 4,405}${color grey}   Raspberry Pi Zero W            ${if_match ${execp ~/conky/rpi_ping_check.sh 192.168.1.120} > 0}${color green}Online${color}${else}${color red}Offline${color}${endif}
+${image ~/conky/rpi.png -s 16x18 -p 4,387}${color grey}   Raspberry Pi Zero W            ${if_match ${execp ~/conky/rpi_ping_check.sh 192.168.1.120} > 0}${color green}Online${color}${else}${color red}Offline${color}${endif}
 $hr
 ]]
