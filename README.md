@@ -28,5 +28,12 @@ docker exec -it mysql-server "bash"
 
 * in systemd unit file set `ProtectHome=off`
 
+## Wayland
 
+[Guide](https://forum.endeavouros.com/t/enable-wayland-gnome-gdm-with-nvidia-and-make-gestures-suspend-work/31621)
+
+## Plymouth
+
+https://wiki.archlinux.org/title/plymouth
+[YT Video](https://www.youtube.com/watch?v=eTk2yG1JFsE)
 
