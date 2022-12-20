@@ -20,7 +20,7 @@ echo 'pinentry-program /usr/bin/pinentry-gnome3' >> ~/.gnupg/gpg-agent.conf
 
 ## MySQL
 ```
-docker run --name mysql-server -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password -d mysql
+docker run --name mysql-server -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password --restart unless-stopped -d mysql
 docker exec -it mysql-server "bash"
 ```
 
@@ -36,4 +36,23 @@ docker exec -it mysql-server "bash"
 
 https://wiki.archlinux.org/title/plymouth
 [YT Video](https://www.youtube.com/watch?v=eTk2yG1JFsE)
+
+
+
+---
+
+## Plex
+
+```
+docker run -d \
+  --name=plex \
+  --net=host \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e VERSION=docker \
+  -v /home/jkotra/Documents/plex-config:/config \
+  -v /home/DLNA:/DLNA \
+  --restart unless-stopped \
+  lscr.io/linuxserver/plex:latest
+```
 
