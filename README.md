@@ -8,7 +8,11 @@
 2. `arch-chroot /mnt`
 3. `efi.sh`
 4. `create_user/sh`
-5. `finish.sh`
+5. `locale.sh`
+6. `finish.sh`
+
+7. `gnome.sh`
+8. `nvidia.sh`
 
 ## PGP GTK Prompt
 
@@ -19,13 +23,19 @@ echo 'pinentry-program /usr/bin/pinentry-gnome3' >> ~/.gnupg/gpg-agent.conf
 ```
 
 ## MySQL
-```
-docker run --name mysql-server -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password --restart unless-stopped -d mysql
-docker exec -it mysql-server "bash"
-```
+
+`docker run --name mysql-server -p 3306:3306 -e MYSQL_ROOT_PASSWORD=password --restart unless-stopped -d mysql`
+
+`docker exec -it mysql-server "bash"`
+
+
+## Postgres
+
+`docker run --name postgres-server -e POSTGRES_PASSWORD=password --restart unless-stopped -d postgres`
 
 ## MiniDLNA
 
+* Follow Arch Wiki
 * in systemd unit file set `ProtectHome=off`
 
 ## Wayland
@@ -36,8 +46,6 @@ docker exec -it mysql-server "bash"
 
 https://wiki.archlinux.org/title/plymouth
 [YT Video](https://www.youtube.com/watch?v=eTk2yG1JFsE)
-
-
 
 ---
 
@@ -51,7 +59,7 @@ docker run -d \
   -e PGID=1000 \
   -e VERSION=docker \
   -v /home/jkotra/Documents/plex-config:/config \
-  -v /home/DLNA:/DLNA \
+  -v /home/jkotra/DLNA:/DLNA \
   --restart unless-stopped \
   lscr.io/linuxserver/plex:latest
 ```
