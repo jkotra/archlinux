@@ -7,12 +7,14 @@
 1. `pacstrap.sh`
 2. `arch-chroot /mnt`
 3. `efi.sh`
-4. `create_user/sh`
+4. `create_user.sh`
 5. `locale.sh`
 6. `finish.sh`
 
 7. `gnome.sh`
 8. `nvidia.sh`
+
+Note: mount /dev/sdb3 /mnt/boot/efi
 
 ## PGP GTK Prompt
 
@@ -21,6 +23,8 @@ mkdir ~/.gnupg
 touch ~/.gnupg/gpg-agent.conf
 echo 'pinentry-program /usr/bin/pinentry-gnome3' >> ~/.gnupg/gpg-agent.conf
 ```
+
+---
 
 ## MySQL
 
@@ -31,7 +35,17 @@ echo 'pinentry-program /usr/bin/pinentry-gnome3' >> ~/.gnupg/gpg-agent.conf
 
 ## Postgres
 
-`docker run --name postgres-server -e POSTGRES_PASSWORD=password --restart unless-stopped -d postgres`
+`docker run --name postgres-server -e POSTGRES_PASSWORD=password -p 5432:5432 --restart unless-stopped -d postgres`
+
+## MongoDB
+
+`docker run --name mongo-server -p 27017:27017 --restart unless-stopped -d mongo:latest`
+
+## Redis
+
+`docker run --name redis-server -p 6379:6379 --restart unless-stopped -d redis`
+
+---
 
 ## MiniDLNA
 
