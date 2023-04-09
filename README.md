@@ -45,6 +45,18 @@ echo 'pinentry-program /usr/bin/pinentry-gnome3' >> ~/.gnupg/gpg-agent.conf
 
 `docker run --name redis-server -p 6379:6379 --restart unless-stopped -d redis`
 
+## thelounge
+
+`docker run -d \
+  --name=thelounge \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e TZ=Asia/Kolkata \
+  -p 9000:9000 \
+  -v /home/jkotra/thelounge/config/:/config \
+  --restart unless-stopped \
+  lscr.io/linuxserver/thelounge:latest`
+
 ---
 
 ## MiniDLNA
