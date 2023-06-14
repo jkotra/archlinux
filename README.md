@@ -86,6 +86,7 @@ docker run -d \
   -e VERSION=docker \
   -v /home/jkotra/Documents/plex-config:/config \
   -v /home/jkotra/DLNA:/DLNA \
+  -v /home/WD_BLUE_BACKUP:/WD_BLUE \
   --restart unless-stopped \
   lscr.io/linuxserver/plex:latest
 ```
