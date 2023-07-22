@@ -59,6 +59,20 @@ echo 'pinentry-program /usr/bin/pinentry-gnome3' >> ~/.gnupg/gpg-agent.conf
 
 ---
 
+# Bluetooth
+
+```
+sudo vi /etc/bluetooth/main.conf
+```
+
+Set
+
+```
+AutoEnable=true
+```
+
+---
+
 ## MiniDLNA
 
 * Follow Arch Wiki

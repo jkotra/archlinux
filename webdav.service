@@ -1,0 +1,11 @@
+[Unit]
+Description=rclone webDAV service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/rclone serve webdav media:DLNA -L --addr :1337
+Restart=on-failure
+RestartSec=30
+
+[Install]
+WantedBy=default.target
