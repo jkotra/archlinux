@@ -35,7 +35,7 @@ echo 'pinentry-program /usr/bin/pinentry-gnome3' >> ~/.gnupg/gpg-agent.conf
 
 ## Postgres
 
-`docker run --name postgres-server -e POSTGRES_PASSWORD=password -p 5432:5432 --restart unless-stopped -d postgres`
+`docker run --name postgres-server -e POSTGRES_PASSWORD=password -p 5432:5432 -v ~/pgdata:/var/lib/postgresql/data --restart unless-stopped -d postgres`
 
 ## MongoDB
 
@@ -61,15 +61,18 @@ echo 'pinentry-program /usr/bin/pinentry-gnome3' >> ~/.gnupg/gpg-agent.conf
 
 # Bluetooth
 
+To disable Auto start:
 ```
 sudo vi /etc/bluetooth/main.conf
 ```
 
-Set
 
 ```
 AutoEnable=true
 ```
+
+to fix mic:
+`sudo pacman -S pipewire-pulse wireplumber`
 
 ---
 
