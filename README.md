@@ -108,3 +108,10 @@ docker run -d \
   lscr.io/linuxserver/plex:latest
 ```
 
+# Tweaks & Links
+
+### Windows 10 Dev Setup
+- [Setup SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=windows)
+- private key must be renamed to `id_ed25519`
+- [Windows 10 GPG fix](https://stackoverflow.com/a/51009405)
+
