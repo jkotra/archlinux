@@ -1,28 +1,4 @@
-# archlinux
-
----
-
-## Order
-
-1. `pacstrap.sh`
-2. `arch-chroot /mnt`
-3. `efi.sh`
-4. `create_user.sh`
-5. `locale.sh`
-6. `finish.sh`
-
-7. `gnome.sh`
-8. `nvidia.sh`
-
-Note: mount /dev/sdb3 /mnt/boot/efi
-
-## PGP GTK Prompt
-
-```
-mkdir ~/.gnupg
-touch ~/.gnupg/gpg-agent.conf
-echo 'pinentry-program /usr/bin/pinentry-gnome3' >> ~/.gnupg/gpg-agent.conf
-```
+# archlinux - Quick Start
 
 ---
 
@@ -45,73 +21,32 @@ echo 'pinentry-program /usr/bin/pinentry-gnome3' >> ~/.gnupg/gpg-agent.conf
 
 `docker run --name redis-server -p 6379:6379 --restart unless-stopped -d redis`
 
-## thelounge
-
-`docker run -d \
-  --name=thelounge \
-  -e PUID=1000 \
-  -e PGID=1000 \
-  -e TZ=Asia/Kolkata \
-  -p 9000:9000 \
-  -v /home/jkotra/thelounge/config/:/config \
-  --restart unless-stopped \
-  lscr.io/linuxserver/thelounge:latest`
-
----
-
-# Bluetooth
-
-To disable Auto start:
-```
-sudo vi /etc/bluetooth/main.conf
-```
-
+# Arch Installation (Mock)
 
 ```
-AutoEnable=true
+# pacstrap
+
+#!/bin/bash
+
+pacstrap /mnt base base-devel linux-lts linux-firmware linux-lts-headers python
+cp -R archlinux /mnt
+genfstab -U /mnt >> /mnt/etc/fstab
+
+useradd -m -g users -G wheel -s /bin/bash $username
+passwd $username
+passwd
+EDITOR=nano visudo
+
+sudo echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+locale-gen
+echo LANG=en_US.UTF-8 > /etc/locale.conf
+export LANG=en_US.UTF-8
+
+pacman -S reflector
+systemctl enable NetworkManager.service
+systemctl enable fstrim.timer
+sudo systemctl enable reflector.timer
+
+sudo pacman -S xorg gnome gnome-themes-extra gnome-tweaks
+systemctl enable gdm.service
 ```
-
-to fix mic:
-`sudo pacman -S pipewire-pulse wireplumber`
-
----
-
-## MiniDLNA
-
-* Follow Arch Wiki
-* in systemd unit file set `ProtectHome=off`
-
-## Wayland
-
-[Guide](https://forum.endeavouros.com/t/enable-wayland-gnome-gdm-with-nvidia-and-make-gestures-suspend-work/31621)
-
-## Plymouth
-
-https://wiki.archlinux.org/title/plymouth
-[YT Video](https://www.youtube.com/watch?v=eTk2yG1JFsE)
-
----
-
-## Plex
-
-```
-docker run -d \
-  --name=plex \
-  --net=host \
-  -e PUID=1000 \
-  -e PGID=1000 \
-  -e VERSION=docker \
-  -v /home/jkotra/Documents/plex-config:/config \
-  -v /home/jkotra/DLNA:/DLNA \
-  -v /home/WD_BLUE_BACKUP:/WD_BLUE \
-  --restart unless-stopped \
-  lscr.io/linuxserver/plex:latest
-```
-
-# Tweaks & Links
-
-### Windows 10 Dev Setup
-- [Setup SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent?platform=windows)
-- private key must be renamed to `id_ed25519`
-- [Windows 10 GPG fix](https://stackoverflow.com/a/51009405)
-
